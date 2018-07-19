@@ -1,4 +1,4 @@
 [submodule "s7plc"]
 	path = s7plc
 	url = https://github.com/paulscherrerinstitute/s7plc
-	ignore = all
+	ignore = dirty
