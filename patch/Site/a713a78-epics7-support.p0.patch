@@ -1,0 +1,26 @@
+diff --git devS7plc.c devS7plc.c
+index 0cf2a29..b050d74 100644
+--- devS7plc.c
++++ devS7plc.c
+@@ -2477,7 +2477,7 @@ STATIC long s7plcWriteAao(aaoRecord *record)
+     return status;
+ }
+ 
+-#if (EPICS_REVISION>=14)
++#if ((EPICS_REVISION>=14) || (EPICS_VERSION>3))
+ /* calcout **********************************************************/
+ 
+ STATIC long s7plcInitRecordCalcout(calcoutRecord *record)
+diff --git drvS7plc.c drvS7plc.c
+index 576d302..97525d6 100644
+--- drvS7plc.c
++++ drvS7plc.c
+@@ -312,7 +312,7 @@ int s7plcConfigure(char *name, char* IPaddr, unsigned int port, unsigned int inS
+     return 0;
+ }
+ 
+-#if (EPICS_REVISION>=14)
++#if ((EPICS_REVISION>=14) || (EPICS_VERSION>3))
+ static const iocshArg s7plcConfigureArg0 = { "name", iocshArgString };
+ static const iocshArg s7plcConfigureArg1 = { "IPaddr", iocshArgString };
+ static const iocshArg s7plcConfigureArg2 = { "IPport", iocshArgInt };

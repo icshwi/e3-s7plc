@@ -44,7 +44,7 @@ sscan_VERSION=
 
 std_VERSION=
 ip_VERSION=
-calc_VERSION=
+#calc_VERSION=
 pcre_VERSION=
 stream_VERSION=
 #s7plc_VERSION=
@@ -111,7 +111,6 @@ USR_CPPFLAGS += -DUSE_TYPED_RSET
 APPSRC:=
 
 USR_INCLUDES += -I$(where_am_I)
-
 
 SOURCES += $(APPSRC)/devS7plc.c
 SOURCES += $(APPSRC)/drvS7plc.c

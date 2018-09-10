@@ -2,7 +2,7 @@
 EPICS_MODULE_NAME:=s7plc
 EPICS_MODULE_TAG:=master
 #
-E3_MODULE_VERSION:=develop
+E3_MODULE_VERSION:=0.0.0
 
 # ONLY IF this module has the sequencer dependency. However,
 # in most case, we don't need to enable the following line,
@@ -17,7 +17,7 @@ E3_MODULE_SRC_PATH:=$(EPICS_MODULE_NAME)-dev
 E3_MODULE_MAKEFILE:=$(EPICS_MODULE_NAME).Makefile
 
 #export DEV_GIT_URL:="https://where your git repo"
-E3_MODULE_DEV_GITURL:="https://github.com/epics-modules/s7plc"
+E3_MODULE_DEV_GITURL:="https://github.com/icshwi/s7plc"
 
 
 
