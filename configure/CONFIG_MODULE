@@ -1,8 +1,8 @@
 #
 EPICS_MODULE_NAME:=s7plc
-EPICS_MODULE_TAG:=1bdbee0
+EPICS_MODULE_TAG:=a713a78
 #
-E3_MODULE_VERSION:=1bdbee0
+E3_MODULE_VERSION:=a713a78
 
 
 # ONLY IF this module has the sequencer dependency. However,
