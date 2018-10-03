@@ -1,7 +1,7 @@
-# what_ever_filename.p0.patch
+# 1.4.0p-fixed-unsigned-int-array-types.p0.patch
 
-Generic Description.....
+https://github.com/paulscherrerinstitute/s7plc/pull/2
+
 
 * created by Jeong Han Lee, han.lee@esss.se
-* related URL or reference https://github.com/icshwi
-* Tuesday, February 13 13:24:57 CET 2018
+* Wednesday, October  3 15:34:01 CEST 2018

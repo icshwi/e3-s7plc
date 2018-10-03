@@ -2,7 +2,7 @@
 EPICS_MODULE_NAME:=s7plc
 EPICS_MODULE_TAG:=s7plc_1_4_0
 #
-E3_MODULE_VERSION:=1.4.0
+E3_MODULE_VERSION:=1.4.0p
 
 #
 # In most case, we don't need to touch the following variables.

@@ -17,6 +17,7 @@ The changes were tested in local environemnt, and commits to the forked reposito
 * Create p0 patch
 
 ```
-$git diff feb8856 master --no-prefix > ../patch/Site/what_ever_filename.p0.patch
+$ git diff --no-prefix > ../patch/Site/1.4.0p-fixed-unsigned-int-array-types.p0.patch
+
 ```
 
