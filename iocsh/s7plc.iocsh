@@ -1,0 +1,46 @@
+#- ###               S7PLC    iocsh                 ###
+#- ####################################################
+#- >> Mandatory
+#- PLC_NAME       - PLC <name> on address <IPaddr> port <port>
+#- PLC_IP         - PLC IP address
+#- INSIZE         - size of data bock PLC -> IOC [bytes]
+#-
+#- >> Optional
+#- PLC_PORT       - PLC Port, Default : 2000
+#- OUTZIE         - size of data bock IOC -> PLC [bytes], Default=0 
+#- BIGENDIAN      - Default : 0
+#-                  <bigEndian>=1   : motorola format data (MSB first)
+#-                  <bigEndian>=0 : intel format data (LSB first)
+#- TIMEOUT        - Default : 3000
+#-                  time to wait for input before disconnecting [ms]
+#- INTERVAL       - Default : 0
+#-                  time to wait before sending new data to PLC [ms]
+#- DEBUG_LEVEL    - Default : 0
+#-                  -1 :  no output
+#-                   0 :   errors only
+#-                   1 :   startup messages
+#-                   2 : + output record processing
+#-                   3 : + inputput record processing
+#-                   4 : + driver calls
+#-                   5 : + io printout
+#-                       be careful using >1 since many messages may introduce delays
+#-
+#- ####################################################
+
+# ESS will use s7plc to read PLC data, so we set outsize and interval to zero as default
+# 
+epicsEnvSet(S7PLC_PLCNAME,  "$(PLC_NAME)")
+epicsEnvSet(S7PLC_INET, "$(PLC_IP)")
+epicsEnvSet(S7PLC_PORT, "$(PLC_PORT=2000)")
+epicsEnvSet(S7PLC_IN_BLOCKSIZE, "$(INSIZE)")
+epicsEnvSet(S7PLC_OUT_BLOCKSIZE, "$(OUTSIZE=0)")
+epicsEnvSet(S7PLC_BIG_ENDIAN, "$(BIGENDIAN=0)")
+epicsEnvSet(S7PLC_TIMEOUT, "$(TIMEOUT=3000)")
+epicsEnvSEt(S7PLC_SEND_INTERVAL, "$(INTERVAL=0)")
+epicsEnvSet(S7DEBUG_LEVEL,  "($DEBUG_LEVEL=0)")
+
+
+var s7plcDebug $(S7DEBUG_LEVEL)
+
+
+s7plcConfigure($(S7PLC_PLCNAME), $(S7PLC_INET), $(S7PLC_PORT), $(S7PLC_IN_BLOCKSIZE), $(S7PLC_OUT_BLOCKSIZE), $(S7PLC_BIG_ENDIAN), $(S7PLC_TIMEOUT), $(S7PLC_SEND_INTERVAL))
