@@ -29,16 +29,7 @@
 #-
 #- ESS will use s7plc to read PLC data, so we set outsize and interval to zero as default
 #- 
-epicsEnvSet(S7PLC_PLCNAME,  "$(PLC_NAME)")
-epicsEnvSet(S7PLC_INET, "$(PLC_IP)")
-epicsEnvSet(S7PLC_PORT, "$(PLC_PORT=2000)")
-epicsEnvSet(S7PLC_IN_BLOCKSIZE, "$(INSIZE)")
-epicsEnvSet(S7PLC_OUT_BLOCKSIZE, "$(OUTSIZE=0)")
-epicsEnvSet(S7PLC_BIG_ENDIAN, "$(BIGENDIAN=1)")
-epicsEnvSet(S7PLC_TIMEOUT, "$(TIMEOUT=3000)")
-epicsEnvSet(S7PLC_SEND_INTERVAL, "$(INTERVAL=0)")
-epicsEnvSet(S7DEBUG_LEVEL,  "$(DEBUG_LEVEL=0)")
 #-
-var s7plcDebug $(S7DEBUG_LEVEL)
+var s7plcDebug $(DEBUG_LEVEL=0)
 #-
-s7plcConfigure($(S7PLC_PLCNAME),$(S7PLC_INET),$(S7PLC_PORT),$(S7PLC_IN_BLOCKSIZE),$(S7PLC_OUT_BLOCKSIZE),$(S7PLC_BIG_ENDIAN),$(S7PLC_TIMEOUT),$(S7PLC_SEND_INTERVAL))
+s7plcConfigure($(PLC_NAME),$(PLC_IP),$(PLC_PORT=2000),$(INSIZE),$(OUTSIZE=0),$(BIGENDIAN=1),$(TIMEOUT=3000),$(INTERVAL=0))
