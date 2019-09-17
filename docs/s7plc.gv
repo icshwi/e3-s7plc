@@ -1,0 +1,8 @@
+digraph s7plc {
+node [shape=record];
+base [label="base 7.0.3"]
+require [label="require 3.1.1"]
+s7plc [label="s7plc 1.4.1"]
+base -> require ->  s7plc 
+} 
+
