@@ -1,0 +1,81 @@
+diff --git devS7plc.c devS7plc.c
+index d4588ee..0de870b 100644
+--- devS7plc.c
++++ devS7plc.c
+@@ -36,16 +36,16 @@
+ #include <aaiRecord.h>
+ #include <aaoRecord.h>
+ 
+-#if ((EPICS_VERSION==3 && EPICS_REVISION>=14) || EPICS_VERSION>3)
+-/* R3.14 */
++#ifdef BASE_VERSION
++#define EPICS_3_13
++#include "compat3_13.h"
++#else
+ #include <postfix.h>
+ #include <calcoutRecord.h>
+ #include <cantProceed.h>
+ #include <epicsExport.h>
+-#else
+-/* R3.13 */
+-#include "compat3_13.h"
+ #endif
++
+ #define isnan(x) ((x)!=(x))
+ 
+ /* suppress compiler warning concerning long long with __extension__ */
+@@ -386,7 +386,7 @@ struct devsup s7plcAao =
+ epicsExportAddress(dset, s7plcAao);
+ 
+ /* calcout **********************************************************/
+-#if ((EPICS_VERSION==3 && EPICS_REVISION>=14) || EPICS_VERSION>3)
++#ifndef EPICS_3_13
+ 
+ STATIC long s7plcInitRecordCalcout(calcoutRecord *);
+ STATIC long s7plcWriteCalcout(calcoutRecord *);
+@@ -2432,7 +2432,8 @@ STATIC long s7plcWriteAao(aaoRecord *record)
+     return status;
+ }
+ 
+-#if (EPICS_REVISION>=14)
++
++#ifndef EPICS_3_13
+ /* calcout **********************************************************/
+ 
+ STATIC long s7plcInitRecordCalcout(calcoutRecord *record)
+diff --git drvS7plc.c drvS7plc.c
+index bdb848b..f87fc63 100644
+--- drvS7plc.c
++++ drvS7plc.c
+@@ -35,8 +35,10 @@
+ 
+ #include "drvS7plc.h"
+ 
+-#if ((EPICS_VERSION==3 && EPICS_REVISION>=14) || EPICS_VERSION>3)
+-/* R3.14 */
++#ifdef BASE_VERSION
++#define EPICS_3_13
++#include "compat3_13.h"
++#else
+ #include <dbAccess.h>
+ #include <iocsh.h>
+ #include <cantProceed.h>
+@@ -45,9 +47,6 @@
+ #include <epicsTimer.h>
+ #include <epicsEvent.h>
+ #include <epicsExport.h>
+-#else
+-/* R3.13 */
+-#include "compat3_13.h"
+ #endif
+ 
+ #define CONNECT_TIMEOUT   5.0  /* connect timeout [s] */
+@@ -261,7 +260,7 @@ int s7plcConfigure(char *name, char* IPaddr, int port, int inSize, int outSize,
+     return 0;
+ }
+ 
+-#if (EPICS_REVISION>=14)
++#ifndef EPICS_3_13
+ static const iocshArg s7plcConfigureArg0 = { "name", iocshArgString };
+ static const iocshArg s7plcConfigureArg1 = { "IPaddr", iocshArgString };
+ static const iocshArg s7plcConfigureArg2 = { "IPport", iocshArgInt };
